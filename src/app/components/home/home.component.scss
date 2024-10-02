@@ -1,0 +1,179 @@
+.container {
+}
+
+.title {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Comic Neue", sans-serif !important;
+}
+
+.task-board {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 200px;
+  font-family: "Comic Neue", sans-serif;
+
+  .todo {
+    background-color: #61a7f1;
+  }
+
+  .inprog {
+    background-color: #dbf48b;
+  }
+
+  .done {
+    background-color: #f2bd78;
+  }
+}
+
+.task-column {
+  width: 30%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  .colum-title {
+    margin: 20px;
+  }
+}
+
+.task-card {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+
+  .task-title {
+    margin: 20px 0px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .action-btn {
+      border-radius: 6px;
+      padding: 10px;
+      font-family: "Comic Neue", sans-serif !important;
+      font-weight: 800;
+      font-size: 14px;
+    }
+  }
+}
+
+button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.add-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .add-task-btn {
+    border-radius: 6px;
+    font-family: "Comic Neue", sans-serif !important;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .add-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 20px;
+    background-color: #83dff4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Comic Neue", sans-serif !important;
+
+    .form-lbl {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-inpt,
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .form-inpt,
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+    }
+
+    small {
+      color: red;
+      font-size: 12px;
+    }
+
+    .submit-btn,
+    button[type="submit"] {
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-family: "Comic Neue", sans-serif !important;
+      font-weight: 800;
+      font-size: 16px;
+      background-color: #0056b3;
+    }
+
+    .submit-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        padding: 15px;
+      }
+
+      button[type="submit"] {
+        font-size: 14px;
+      }
+    }
+  }
+}
