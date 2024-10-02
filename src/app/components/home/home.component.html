@@ -46,25 +46,67 @@
           </div>
         </div>
 
-        <div>
-          <label class="form-lbl" for="assignedTo">Assigned to</label>
-          <input
-            class="form-inpt"
-            id="assignedTo"
-            formControlName="assignedTo"
-            type="text"
-          />
-          <div
-            *ngIf="
-              getCtrl('assignedTo').touched && getCtrl('assignedTo').invalid
-            "
-          >
-            <small *ngIf="getCtrl('assignedTo').errors?.['required']"
-              >The "Assigned to" field is required.</small
+        <div class="assign-section">
+          <div class="title">
+            <label class="form-lbl" for="assignedTo">Assigned to</label>
+            &nbsp;<button
+              type="button"
+              class="add-btn"
+              [disabled]="!users.valid"
+              (click)="addUserForm()"
             >
-            <small *ngIf="getCtrl('assignedTo').errors?.['maxlength']"
-              >The "Assigned To" field cannot exceed 100 characters.</small
-            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <div class="users-list">
+            <div class="ng-content" formArrayName="assignedTo">
+              <div
+                class="user"
+                *ngFor="let user of users.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <label class="form-lbl" for="name">Name</label>
+                <input
+                  class="form-inpt"
+                  id="name"
+                  formControlName="name"
+                  type="text"
+                />
+                <label class="form-lbl" for="age">Age</label>
+                <input
+                  class="form-inpt"
+                  id="age"
+                  formControlName="age"
+                  type="number"
+                />
+                <label class="form-lbl" for="skill">Skills</label>
+                <div class="skill-list" *ngIf="getUserSkills(user).length">
+                  <label
+                    *ngFor="let skill of getUserSkills(user)"
+                    class="form-lbl"
+                    >{{ skill }} &nbsp;<i
+                      class="fa-solid fa-trash delete-btn"
+                      (click)="deleteUserSkill(user, skill)"
+                    ></i
+                  ></label>
+                </div>
+                <input
+                  class="form-inpt skill-input"
+                  id="skill"
+                  formControlName="skill"
+                  type="text"
+                />
+                &nbsp;<button
+                  type="button"
+                  class="add-btn"
+                  [disabled]="!getUserProp(user, 'skill')"
+                  (click)="addUserSkill(user)"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -88,7 +130,15 @@
       <div *ngFor="let task of tasksTodo" class="task-card">
         <h4 class="task-title">{{ task.title }}</h4>
         <p>{{ task.description }}</p>
-        <p><strong>Assigned to:</strong> {{ task.assignee }}</p>
+        <p><strong>Assigned to:</strong></p>
+        <div class="user" *ngFor="let user of task.assignee">
+          <p>
+            <strong>{{ user.name }} ({{ user.age }})</strong>
+          </p>
+          <label *ngFor="let skill of user.skills" class="form-lbl"
+            >{{ skill }} <br />
+          </label>
+        </div>
         <div class="actions">
           <button
             class="action-btn"
@@ -112,7 +162,15 @@
       <div *ngFor="let task of tasksInProgress" class="task-card">
         <h4 class="task-title">{{ task.title }}</h4>
         <p>{{ task.description }}</p>
-        <p><strong>Assigned to:</strong> {{ task.assignee }}</p>
+        <p><strong>Assigned to:</strong></p>
+        <div class="user" *ngFor="let user of task.assignee">
+          <p>
+            <strong>{{ user.name }} ({{ user.age }})</strong>
+          </p>
+          <label *ngFor="let skill of user.skills" class="form-lbl"
+            >{{ skill }} <br />
+          </label>
+        </div>
         <div class="actions">
           <button class="action-btn" (click)="updateTaskStatus(task, 'done')">
             Move to Done &nbsp;
@@ -132,7 +190,15 @@
       <div *ngFor="let task of tasksDone" class="task-card">
         <h4 class="task-title">{{ task.title }}</h4>
         <p>{{ task.description }}</p>
-        <p><strong>Assigned to:</strong> {{ task.assignee }}</p>
+        <p><strong>Assigned to:</strong></p>
+        <div class="user" *ngFor="let user of task.assignee">
+          <p>
+            <strong>{{ user.name }} ({{ user.age }})</strong>
+          </p>
+          <label *ngFor="let skill of user.skills" class="form-lbl"
+            >{{ skill }} <br />
+          </label>
+        </div>
         <div class="actions">
           <button
             class="action-btn"

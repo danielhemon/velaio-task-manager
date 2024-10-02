@@ -40,6 +40,19 @@
   .colum-title {
     margin: 20px;
   }
+
+  p {
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  .user {
+    background-color: rgb(214, 165, 242);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .task-card {
@@ -173,6 +186,83 @@ button:hover {
 
       button[type="submit"] {
         font-size: 14px;
+      }
+    }
+
+    .assign-section {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      .title {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
+
+        .add-btn {
+          border-radius: 6px;
+          padding: 5px;
+          font-family: "Comic Neue", sans-serif !important;
+          font-weight: 800;
+          font-size: 10px;
+          background-color: #0056b3;
+        }
+
+        .add-btn:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+
+      .users-list {
+        width: 100%;
+        .user {
+          background-color: rgb(193, 244, 184);
+          padding: 10px;
+          margin-bottom: 10px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          width: 100%;
+
+          .form-lbl {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+          }
+
+          .form-inpt {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+          }
+
+          .skill-input {
+            width: 60% !important;
+          }
+
+          .add-btn {
+            border-radius: 6px;
+            padding: 5px;
+            font-family: "Comic Neue", sans-serif !important;
+            font-weight: 800;
+            font-size: 10px;
+            background-color: #0056b3;
+          }
+
+          .add-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+          }
+
+          .delete-btn {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
